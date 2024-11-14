@@ -19,7 +19,9 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 9.0.x
+        global-json-file: global.json
+    - name: Install workloads
+      run: dotnet workload install aspire
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
