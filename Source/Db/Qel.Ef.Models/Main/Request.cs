@@ -9,8 +9,8 @@ namespace Qel.Ef.Models;
 [Comment("Заявка в банк")]
 public class Request : BaseEntity<long>, ICreationAndModifyTimeBehavior
 {
-    public int Summa { get; set; }
-    public int Period { get; set; }
+    public double Summa { get; set; }
+    public double Period { get; set; }
     public DateTime? CreationTime { get; set; }
     public DateTime? ModifyTime { get; set; }
 

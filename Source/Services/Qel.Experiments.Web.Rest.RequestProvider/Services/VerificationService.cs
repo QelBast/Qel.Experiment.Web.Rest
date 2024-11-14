@@ -71,11 +71,6 @@ public class VerificationService(ILogger<VerificationService> logger,
     {
         var httpOps = _options.HttpClientOptions.FirstOrDefault(x => x.Key == "BlacklistCheck");
         var client = _clientFactory.CreateClient("BlacklistClient");
-        //var urlBuilder = new StringBuilder();
-        //urlBuilder.Append(httpOps!.Host +
-        //    (httpOps!.Port is not null ? $":{httpOps.Port}" : string.Empty)  + 
-        //    (httpOps!.Host.EndsWith('/') ? string.Empty : "/"))
-        //    .Append($"{httpOps?.Address}{person.FirstName}/{person.LastName}/{passport.Serie}/{passport.Number}");
         var urlBuilder = new UriBuilder(
             scheme: httpOps!.Schema,
             host: httpOps.Host,
@@ -107,9 +102,16 @@ public class VerificationService(ILogger<VerificationService> logger,
         return totalSum <= _options.MaxDebtsSum && totalCredits < _options.MaxDebtsCount;
     }
 
-    public async Task AddNewRequest(Person person, Passport passport)
+    public async Task AddRequest(FullRequest content)
     {
-        
-        _repo.Add();
+        await _repo.Add(new Ef.Models.Request()
+        {
+            Passport = new()
+            { Number = content.Passport.Number, Serie = content.Passport.Serie },
+            Person = new()
+            { FirstName = content.Person.FirstName, LastName = content.Person.LastName, Birthdate = content.Person.BirthDate.ToUniversalTime() },
+            Period = content.Request.Period,
+            Summa = content.Request.Summa,
+        });
     }
 }

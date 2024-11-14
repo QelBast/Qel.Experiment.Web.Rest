@@ -41,7 +41,7 @@ internal class Program
             },
             host.Configuration, 
             [new Configurator(nameof(DbContextMain))]);
-            
+
         var app = host.Build();
         app.Run();
     }

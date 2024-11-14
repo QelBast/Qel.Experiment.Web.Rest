@@ -3,7 +3,6 @@ using Microsoft.Extensions.Options;
 
 namespace Qel.Ef.DbClient;
 
-[Obsolete("Перегружен. Проще всё же задавать DbContext и сет в реализации")]
 public class BaseRepository<T, TContext> : IDisposable 
     where TContext : DbContext
     where T : class
@@ -24,8 +23,8 @@ public class BaseRepository<T, TContext> : IDisposable
     }
 
     public RepositoryOptions Options { get; set; } 
-    public TContext DbContext { get; }
-    public DbSet<T> Entities { get; set; }
+    protected TContext DbContext { get; }
+    protected DbSet<T> Entities { get; }
 
     public void Dispose()
     {

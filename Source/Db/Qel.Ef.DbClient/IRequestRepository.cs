@@ -4,11 +4,6 @@ namespace Qel.Ef.DbClient;
 
 public interface IRequestRepository
 {
-    /// <summary>
-    /// Create new request
-    /// </summary>
-    /// <param name="request"></param>
-    /// <returns></returns>
     public Task Add(Request request);
 
     /// <summary>

@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using Qel.Api.Transport;
 using Qel.Api.Transport.Behaviours;
 using Qel.Common.DateTimeUtils;
+using Qel.Ef.DbClient;
 using Qel.Experiments.Web.Rest.Domain;
 
 namespace Qel.Experiments.Web.Rest.RequestProvider;
@@ -49,6 +50,7 @@ VerificationService verification
                 if(success)
                 {
                     resultContent = HttpStatusCode.OK.ToString();
+                    await _verification.AddRequest(content);
                 }
                 else
                 {
