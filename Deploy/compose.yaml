@@ -1,0 +1,39 @@
+name: rest
+networks:
+  rabbit_net:
+  db_postgres_net:
+services:
+  rabbitmq:
+      image: rabbitmq:3.13.3-management-alpine
+      env_file: rabbit.env
+      healthcheck:
+        test: rabbitmq-diagnostics check_port_connectivity
+        interval: 30s
+        timeout: 30s
+        retries: 10
+      networks:
+        - rabbit_net
+      ports:
+        - 32345:15672
+        - 32346:5672
+      configs:
+        - source: plugins
+          target: /etc/rabbitmq/enabled_plugins
+      volumes:
+        - .docker-conf/rabbitmq:/etc/rabbitmq
+
+  dbPostgres:
+    image: postgres:alpine3.20
+    env_file:
+      - pgsql.env
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}"]
+      interval: 30s
+      timeout: 30s
+      retries: 10
+    ports:
+      - 32942:5432
+
+configs:
+  plugins:
+    content: "[rabbitmq_management, rabbitmq_jms_topic_exchange]."

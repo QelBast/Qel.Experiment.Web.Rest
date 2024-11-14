@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Transport\Qel.Api.Transport\Qel.Api.Transport.csproj" />
+    <ProjectReference Include="..\..\..\Transport\RabbitMq\Qel.Api.Transport.RabbitMq\Qel.Api.Transport.RabbitMq.csproj" />
+    <ProjectReference Include="..\Qel.Common.Console.Hosting\Qel.Common.Console.Hosting.csproj" />
+  </ItemGroup>
+
+</Project>

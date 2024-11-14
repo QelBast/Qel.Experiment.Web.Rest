@@ -1,0 +1,15 @@
+{
+    "DbContextMain": {
+        "Connection": "Host=localhost;Port=32942;Username=postgres;Password=postgres;Database=main",
+        "DbProvider": "Postgres"
+    },
+    "DbContextBlacklist": {
+        "Connection": "Host=localhost;Port=32942;Username=postgres;Password=postgres;Database=blacklist",
+        "DbProvider": "Postgres"
+    },
+    "DbContextPassport": {
+        "Connection": "Host=localhost;Port=32942;Username=postgres;Password=postgres;Database=passport",
+        "DbProvider": "Postgres"
+    },
+    "EntityConfigurationsAssemblyPath": "Qel.Ef.Models"
+}

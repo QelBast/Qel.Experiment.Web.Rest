@@ -1,0 +1,6 @@
+@Qel.Experiments.Web.Rest.GatewayApi_HostAddress = http://localhost:5253
+
+GET {{Qel.Experiments.Web.Rest.GatewayApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

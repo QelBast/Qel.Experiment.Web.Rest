@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
+    <PackageReference Include="Swashbuckle.AspNetCore" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Db\Qel.Ef.DbClient\Qel.Ef.DbClient.csproj" />
+    <ProjectReference Include="..\..\Db\Qel.Ef.Contexts\Qel.Ef.Contexts.csproj" />
+    <ProjectReference Include="..\..\Common\Console\Qel.Common.Console.Hosting.RabbitMq\Qel.Common.Console.Hosting.RabbitMq.csproj" />
+    <ProjectReference Include="..\Shared\Qel.Experiments.Web.Rest.Domain\Qel.Experiments.Web.Rest.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

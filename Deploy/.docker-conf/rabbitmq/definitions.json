@@ -1,0 +1,62 @@
+{
+    "users": [
+        {"name":"admin","password_hash":"kwG9w16SoUnVkJi+8dxUM+MFixcE8FbKbAc9nW7EjmkRtPKv","hashing_algorithm":"rabbit_password_hashing_sha256","tags":"administrator"},
+        {"name":"guest","password_hash":"0cL/ey7VOA+Q65jrc4V2vScTQnBJEceaNM3TyV8UZgE1IG0/","hashing_algorithm":"rabbit_password_hashing_sha256","tags":"administrator"}
+    ],
+    "permissions": [
+        {"user":"admin","vhost":"/","configure":".*","write":".*","read":".*"},
+        {"user":"guest","vhost":"/","configure":".*","write":".*","read":".*"}
+    ],
+    "topic_permissions":[
+        {"user":"admin","vhost":"/","exchange":"","write":".*","read":".*"},
+        {"user":"guest","vhost":"/","exchange":"","write":".*","read":".*"}
+    ],
+    "vhosts":[
+        {"name":"/"}
+    ],
+    "queues":[
+        {
+            "name": "rest.request",
+            "vhost": "/",
+            "durable": true,
+            "auto_delete": false,
+            "arguments":{}
+        },
+        {
+            "name": "rest.result",
+            "vhost": "/",
+            "durable": true,
+            "auto_delete": false,
+            "arguments":{}
+        }
+    ],
+    "exchanges":[
+        {
+            "name": "rest.direct",
+            "vhost": "/",
+            "type": "direct",
+            "durable": true,
+            "auto_delete": false,
+            "internal": false,
+            "arguments":{}
+        }
+    ],
+    "bindings":[
+        {
+            "source": "rest.direct",
+            "vhost": "/",
+            "destination": "rest.result",
+            "destination_type": "queue",
+            "routing_key": "request.success",
+            "arguments":{}
+        },
+        {
+            "source": "rest.direct",
+            "vhost": "/",
+            "destination": "rest.request",
+            "destination_type": "queue",
+            "routing_key": "request.sendrequest",
+            "arguments":{}
+        }
+    ]
+}

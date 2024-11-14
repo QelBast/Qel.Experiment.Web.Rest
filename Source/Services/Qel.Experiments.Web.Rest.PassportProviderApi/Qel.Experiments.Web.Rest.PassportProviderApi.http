@@ -1,0 +1,6 @@
+@Qel.Experiments.Web.Rest.PassportProviderApi_HostAddress = http://localhost:5210
+
+GET {{Qel.Experiments.Web.Rest.PassportProviderApi_HostAddress}}/api/passport/2228/213455
+Accept: application/json
+
+###
